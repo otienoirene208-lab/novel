@@ -12,6 +12,7 @@ import Footer from './component/Footer';
 import Mycarousel from './component/Carousel';
 import Getproduct from './component/Getproducts';
 import Addproduct from './component/Addproducts';
+import cart from './component/Cart';
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
         <Route path='/addproduct'element={<Addproduct/>}/>
         <Route path='/makepayment'element={<Makepayment/>}/>
         <Route path='*'element={<Notfound/>}/>
-        
+        <Route path='/cart'element={<cart/>}/>
       </Routes>
 
         {/* footer component */}

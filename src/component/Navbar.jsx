@@ -86,6 +86,10 @@ const handleLogout=()=>{
           <li  className='nav-item'>
             <NavLink className='nav-link' to="/signup">Signup</NavLink>
           </li>
+          
+            
+
+          
           </>
           )}
 

@@ -13,15 +13,15 @@ const Mycarousel = () => {
             {/* slides */}
             <div className='carousel-inner'>
                 <div className='carousel-item active'>
-                    <img src="images/images.jpeg" className='d-block w-100' height='200px' alt="" />
+                    <img src="images/gilded.jpeg" className='d-block w-100' height='600px' alt="" />
                     
                 </div>
                 <div className='carousel-item'>
-                    <img src="/images/long.jpeg"className='d-block w-100' height='200px' alt="" />
+                    <img src="/images/Between two fires.jpeg"className='d-block w-100' height='200px' alt="" />
                    
                 </div>
                 <div className='carousel-item'>
-                    <img src="/image/snow.jpeg" className='d-block w-100' height='200px'alt="" />
+                    <img src="/image/magora.jpeg" className='d-block w-100' height='200px'alt="" />
                     
                 </div>
             </div>

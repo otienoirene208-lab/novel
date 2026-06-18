@@ -39,7 +39,7 @@ const Addproduct = () => {
       const response =await axios.post("https://adhiambo.alwaysdata.net/api/addproduct",formdata)
 
       // step 11.set back the loading hook to emtpy
-      setloading("false")
+      setloading("")
       setsuccess(" successful")
 
       // step 12. use state to check message
