@@ -21,11 +21,11 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: rgb(247, 0, 0);
   }
   
   .App-link {
-    color: #61dafb;
+    color: #61e9fb;
   }
   
   @keyframes App-logo-spin {
@@ -42,13 +42,13 @@
     object-fit: contain;
   }
   .prodname{
-    color: coral;
+    color: rgb(255, 80, 255);
   }
   .prodDesc{
     color: darkmagenta;
   }
   .prodcost{
-    color: darkgrey;
+    color: rgb(0, 97, 153);
     font-weight: 700;
   }
   .product-img-pay{

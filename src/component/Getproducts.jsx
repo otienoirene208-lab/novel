@@ -55,11 +55,12 @@ const Getproduct = () => {
              <div className='card shadow'>
                <img src={img_url +  product.product_photo}alt="" className='product-img'  />
      
-               <h4 className='prodname'>{product.product_name}</h4>
+               <h4 className='prodname'>{product.product_name.slice(0,13)}...</h4>
      
                <p className='prodDesc'>{product.product_description.slice(0,50)}...</p>
      
                <h2 className='prodcost'>Ksh {product.product_cost}</h2>
+              
 
                <button className='btn btn-outline-info'
                onClick={()=> navigate('/makepayment',{state:{product}})}

@@ -12,7 +12,10 @@ import Footer from './component/Footer';
 import Mycarousel from './component/Carousel';
 import Getproduct from './component/Getproducts';
 import Addproduct from './component/Addproducts';
-import cart from './component/Cart';
+import Cart from './component/Cart';
+import Contact from './component/Contact';
+import About from './component/About';
+
 
 function App() {
   return (
@@ -35,7 +38,9 @@ function App() {
         <Route path='/addproduct'element={<Addproduct/>}/>
         <Route path='/makepayment'element={<Makepayment/>}/>
         <Route path='*'element={<Notfound/>}/>
-        <Route path='/cart'element={<cart/>}/>
+        <Route path='/cart'element ={<Cart/>}/>
+        <Route path='/contact'element={<Contact/>}/>
+        <Route path='/about'element={<About/>}/>
       </Routes>
 
         {/* footer component */}

@@ -9,7 +9,7 @@ const Footer = () => {
 
                     {/* brand /about website */}
                     <div className='col-md-4 mb-3'>
-                        <h5 className='fw-bold bg-warning '>Sokogarden App</h5>
+                        <h5 className='fw-bold bg-warning '>Novelnest</h5>
                         <p className='small'>
                             Bulding Modern Web Application With User Experience
                         </p>
@@ -36,9 +36,9 @@ const Footer = () => {
                     {/* website contact infomation */}
                     <div className='col-md-4 mb-3  text-shadow: 0 0 10px rgb(255, 214, 12);'>
                         <h5 className='bg-warning'> contacts</h5>
-                        <p>Email:Support@Sokogarden.com</p>
-                        <p>phone:+254 784 457</p>
-                        <p>location:Karen</p>
+                        <p>Email:Support@NovelNestcom</p>
+                        <p>phone:+254 111987296</p>
+                        <p>location:Karen,Westlands,town</p>
                     </div>
 
                 </div>

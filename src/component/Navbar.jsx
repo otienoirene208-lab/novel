@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import Cart from './Cart';
 
 const Navbar = () => {
 const[user,setUser]=useState(null);
@@ -26,9 +27,9 @@ const handleLogout=()=>{
 
 
   return (
-    <nav className='navbar navbar-expand-lg navbar-dark bg-dark px-3'>
+    <nav className='navbar navbar-expand-md navbar-dark bg-dark px-3'>
       <NavLink to="/" className="navbar-brand text-light fw-bold">
-        SOKOGARDEN
+        NOVELNEST
       </NavLink>
 
 
@@ -74,6 +75,9 @@ const handleLogout=()=>{
               Logout
             </button>
            </li>
+
+           
+
             </>
           ):
 
@@ -86,8 +90,8 @@ const handleLogout=()=>{
           <li  className='nav-item'>
             <NavLink className='nav-link' to="/signup">Signup</NavLink>
           </li>
+
           
-            
 
           
           </>

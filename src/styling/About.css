@@ -1,0 +1,26 @@
+.about {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    line-height: 1.8;
+    color: #333;
+  }
+  
+  .about h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .about h2 {
+    margin-top: 25px;
+    color: #34495e;
+  }
+  
+  .about ul {
+    padding-left: 20px;
+  }
+  
+  .about li {
+    margin-bottom: 8px;
+  }

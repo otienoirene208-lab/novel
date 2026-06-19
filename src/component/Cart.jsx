@@ -1,11 +1,13 @@
-function cart(){
-    return(
-        <div>
-            <h1>My cart</h1>
-            <p>items in cart.</p>
+import React, { useState } from 'react'
 
-        </div>
-    )
+const Cart = () => {
+    const[cart,setCart]=useState([]);
+  return (
+    <div>
+      <h1>Novel store</h1>
+      <button onClick={()=> setCart([...Cart,])}>Add to cart</button>
+    </div>
+  )
 }
 
-export default cart
+export default Cart
