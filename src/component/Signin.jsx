@@ -1,103 +1,88 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
 
-  // step 1:declare the hooks
-  const[email,setemail]=useState("")
-  const[password,setpassword]=useState("")
+  const [loading, setloading] = useState("");
+  const [success, setsuccess] = useState("");
+  const [error, seterror] = useState("");
 
-    // step3.declare three additional hooks
-    const[loading,setloading]=useState("")
-    const[success,setsuccess]=useState("")
-    const[error,seterror]=useState("")
+  const navigate = useNavigate();
 
-    // step 14.create a usenavigate hook that wiil enable you to redirect users to the homepage 
-    // after a successful login in.
-    const navigate =useNavigate()
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+    setloading("Signing you in...");
 
-    // step4. create a function to handle submit action
-    const handlesubmit =async(e)=>{
+    try {
+      const formdata = new FormData();
+      formdata.append("email", email);
+      formdata.append("password", password);
 
-      // step5.prevent the site from reloading
-      e.preventDefault()
+      const response = await axios.post(
+        "https://adhiambo.alwaysdata.net/api/signin",
+        formdata
+      );
 
-      // step6.update the loading hook with a message
-      setloading("wait for a few seconds...")
+      setloading("");
 
-      // step7.create a try and catch block
-      try{
-        // step8.create a form data object
-        const formdata =new FormData()
-
-        // step9.append the details into the form data
-        formdata.append("email",email)
-        formdata.append("password",password)
-
-        // step10.interact with the axios module
-        const response =await axios.post("https://adhiambo.alwaysdata.net/api/signin",formdata)
-
-        // step11.set back the loading hook to empty
-        setloading("")
-
-        // step12. by use of an if statement,check whether there is a success message given back 
-        // as a response from the hosted api.if there is ,it meanes the user has entered corect  details 
-        // give a response tothe user meaning the details he entered are incorrect.
-        if(response.data.success==="welcome"){
-          // setsuccess("login success")
-          // bellow we redirect our user to home page
-
-          localStorage.setItem("user", JSON.stringify(response.data.user));
-         navigate("/") 
-        }
-        else{
-          seterror("login unsuccessful")
-        }
-     }
-     catch(error){
-      // step13. set loading back to default and update the error hook just incase there is an error
-      setloading("")
-      seterror("sorry, something wrong happened .please try again...")
-     }
-
+      if (response.data.success === "welcome") {
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        setsuccess("Login successful!");
+        navigate("/");
+      } else {
+        seterror("Invalid email or password");
+      }
+    } catch (error) {
+      setloading("");
+      seterror("Something went wrong. Try again.");
     }
+  };
+
   return (
-    <div className='row  justify-content-center mt-4'>
-      <div className='col-md-6 p-4 card shadow'>
-            <h1>Signin</h1>
+    <div className="signin-wrapper">
+      <div className="card signin-card shadow-lg">
+        <h2 className="text-center mb-3">Welcome Back</h2>
+        <p className="text-center text-muted">Sign in to continue</p>
 
-            <h4 className='text-info'>{loading}</h4>
-            <h4 className='text-success'>{success}</h4>
-            <h4 className='text-danger'>{error}</h4>
+        {loading && <div className="alert alert-info">{loading}</div>}
+        {success && <div className="alert alert-success">{success}</div>}
+        {error && <div className="alert alert-danger">{error}</div>}
 
-            <form onSubmit={handlesubmit}>
-              {/* step 2 .test the hooks */}
-              <input type="email"
+        <form onSubmit={handlesubmit}>
+          <div className="mb-3">
+            <label>Email</label>
+            <input
+              type="email"
               value={email}
-              onChange={(e)=>setemail(e. target.value)}
-              placeholder='Enter your email'
-              className='form-control' />
-              {/* {email} */}
-              <br />
-              <br />
+              onChange={(e) => setemail(e.target.value)}
+              className="form-control"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
 
-              <input type="password"
+          <div className="mb-3">
+            <label>Password</label>
+            <input
+              type="password"
               value={password}
-              onChange={(e)=>setpassword(e.target.value)}
-              placeholder='Enter your password'
-              className='form-control' />
-              {/* {password} */}
-              <br /><br />
+              onChange={(e) => setpassword(e.target.value)}
+              className="form-control"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
 
-              <input type="submit"
-              value="signin" className='btn btn-outline-primary'/>
-            
-              
-            </form>
-            </div>
+          <button className="btn btn-primary w-100" type="submit">
+            Sign In
+          </button>
+        </form>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Signin
+export default Signin;

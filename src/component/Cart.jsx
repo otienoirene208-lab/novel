@@ -1,13 +1,23 @@
-import React, { useState } from 'react'
+import React from "react";
 
 const Cart = () => {
-    const[cart,setCart]=useState([]);
   return (
-    <div>
-      <h1>Novel store</h1>
-      <button onClick={()=> setCart([...Cart,])}>Add to cart</button>
-    </div>
-  )
-}
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
+      <div className="bg-white shadow-lg rounded-2xl p-8 max-w-md w-full text-center">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">
+          Shopping Cart
+        </h1>
 
-export default Cart
+        <p className="text-gray-600 mb-6">
+          Your selected items will appear here.
+        </p>
+
+        <div className="border-2 border-dashed border-gray-300 rounded-lg p-8">
+          <p className="text-gray-500">🛒 Your cart is currently empty</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Cart;

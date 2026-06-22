@@ -15,6 +15,9 @@ import Addproduct from './component/Addproducts';
 import Cart from './component/Cart';
 import Contact from './component/Contact';
 import About from './component/About';
+import Darkmode from './component/Darkmode';
+import Categories from './component/Categories';
+import Books from './component/Books';
 
 
 function App() {
@@ -41,6 +44,9 @@ function App() {
         <Route path='/cart'element ={<Cart/>}/>
         <Route path='/contact'element={<Contact/>}/>
         <Route path='/about'element={<About/>}/>
+        <Route path='/darkmode'element={<Darkmode/>}/>
+        <Route path='/categories'element={<Categories/>}/>
+        <Route path='/books'element={<Books/>}/>
       </Routes>
 
         {/* footer component */}

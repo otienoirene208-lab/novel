@@ -1,0 +1,9 @@
+.dark {
+    background-color: #111827;
+    color: white;
+  }
+  
+  .dark .card {
+    background-color: #1f2937;
+    color: white;
+  }

@@ -3,117 +3,107 @@ import React, { useState } from 'react'
 
 const Signup = () => {
 
-  //step 1. Bellow are our hooks that enables us to store the state of our application
-  const[username,setusername]= useState("")
-  const[email,setemail]= useState("")
-  const[password,setpassword]=useState("")
-  const[phone,setphone]=useState("")
+  const [username, setusername] = useState("")
+  const [email, setemail] = useState("")
+  const [password, setpassword] = useState("")
+  const [phone, setphone] = useState("")
 
-  //step 3. three additional hooks
-  const[loading,setloading]=useState("")
-  const[error,seterror]=useState("")
-  const[success,setsuccess] =useState("")
+  const [loading, setloading] = useState("")
+  const [error, seterror] = useState("")
+  const [success, setsuccess] = useState("")
 
-  //step 4. Bellow is our function
-  const handlesubmit =async(e)=>{
-    // prevent defaults - it means yoou are preventing the browser  from reloading when a
-    //step 5. user submits details for registration
+  const handlesubmit = async (e) => {
     e.preventDefault()
 
-    // step 6.update loading page
-    setloading("Regisration in progress...")
+    setloading("Registering account...")
+    seterror("")
+    setsuccess("")
 
-    // step 7.try catch block
-    try{
-    // step 8.  create a form data object
-    const formData =new FormData()
+    try {
+      const formData = new FormData()
+      formData.append("username", username)
+      formData.append("email", email)
+      formData.append("password", password)
+      formData.append("phone", phone)
 
-    // step 9.append
-    formData.append("username",username)
-    formData.append("email",email)
-    formData.append("password",password)
-    formData.append("phone",phone)
+      await axios.post("https://adhiambo.alwaysdata.net/api/signup", formData)
 
-    // step 10.axios
-    const response =await axios.post("https://adhiambo.alwaysdata.net/api/signup",formData)
+      setloading("")
+      setsuccess("User registered successfully 🎉")
 
-    // step 11.
-    setloading("")
-    setsuccess("user registared successfully.")
-
-    // step 12.
-    setusername("")
-    setemail("")
-    setpassword("")
-    setphone("")
+      setusername("")
+      setemail("")
+      setpassword("")
+      setphone("")
+    } catch (error) {
+      setloading("")
+      seterror("Something went wrong. Please try again.")
     }
-    catch(error){
-      //step 13.
-      setloading("") 
-      seterror("sorry, sothing happened .please try again..")
-      
-
-    }
-
   }
-  
+
   return (
-    <div className='row justify-content-center mt-4'>
-         
-              <div className='col-md-6 p-4 card shadow'>
-              <h1> Signup</h1> 
-             
-           <form  onSubmit={handlesubmit}>
+    <div className="d-flex justify-content-center align-items-center min-vh-100 bg-light">
 
-              <h4 className='text-info'>{loading}</h4>
-              <h4 className='text-success'>{success}</h4>
-              <h4 className='text-danger'>{error}</h4>
-            <input type="text"
-            placeholder='Enter your username'
-            value={username}
-            onChange={(e)=> setusername(e.target.value)}
-            className='form-control' />
+      <div className="card shadow-lg p-4 border-0" style={{ width: "420px", borderRadius: "15px" }}>
 
-            {/* {username} */}
+        <h2 className="text-center mb-3 text-primary">Create Account</h2>
+        <p className="text-center text-muted mb-4">Sign up to get started</p>
 
-            <br />
-            <br />
+        <form onSubmit={handlesubmit}>
 
-            <input type="email"
-            placeholder='Enter your email'
-            value={email}
-            onChange={(e)=> setemail(e.target.value)}
-            className='form-control' />
+          {loading && <div className="alert alert-info py-2">{loading}</div>}
+          {success && <div className="alert alert-success py-2">{success}</div>}
+          {error && <div className="alert alert-danger py-2">{error}</div>}
 
-            {/* {email} */}
+          <div className="mb-3">
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setusername(e.target.value)}
+              className="form-control"
+            />
+          </div>
 
-            <br />
-            <br />
-            <input type="password"
-            placeholder='Enter your password'
-            value={password}
-            onChange={(e)=>setpassword(e.target.value)}
-            className='form-control' />
+          <div className="mb-3">
+            <input
+              type="email"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
+              className="form-control"
+            />
+          </div>
 
+          <div className="mb-3">
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setpassword(e.target.value)}
+              className="form-control"
+            />
+          </div>
 
-            {/* {password} */}
-            
-            <br />
-            <br />
-            <input type="phone"
-             placeholder='Enter phone'
-             value={phone}
-             onChange={(e)=> setphone(e.target.value)}
-             className='form-control'/><br /><br />
-             {/* {phone} */}
+          <div className="mb-3">
+            <input
+              type="tel"
+              placeholder="Phone number"
+              value={phone}
+              onChange={(e) => setphone(e.target.value)}
+              className="form-control"
+            />
+          </div>
 
-            <input type="submit"value="signup" className='btn btn-outline-primary'/>
-            
+          <button
+            type="submit"
+            className="btn btn-primary w-100"
+          >
+            Sign Up
+          </button>
 
-
-           </form>
-           </div>
-
+        </form>
+      </div>
     </div>
   )
 }
